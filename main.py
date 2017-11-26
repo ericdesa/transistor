@@ -60,7 +60,7 @@ def absence_detected():
 
 def is_week_day():
     weekday = datetime.now().weekday()
-    return weekday > 0 and weekday < 5
+    return weekday >= 0 and weekday < 5
 
 
 def say_hour():
