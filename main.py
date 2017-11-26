@@ -95,9 +95,9 @@ def run_loop():
             nb_off = nb_off + 1
 
         total = total + 1
-	
-	if is_playing and datetime.now().minute % 5 == 0:
-	    say_hour()
+
+        if is_playing and time.localtime().tm_min % 5 == 0:
+            say_hour()
 
         if total >= THRESHOLD:
 	    # print nb_off
