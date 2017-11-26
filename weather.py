@@ -4,18 +4,11 @@ import json
 import urllib
 import urllib2
 import time
-from yahoo_oauth import OAuth2
 
 
 def get_weather_at_home():
     url = "https://query.yahooapis.com/v1/public/yql?q=select+%2A+from+weather.forecast+where+woeid%3D%22626021%22+%20and%20+u%3D%22c%22&language=fr-FR&format=json"
     print url
-
-    #oauth = OAuth2(None, None, from_file='weather_yahoo_keys.json')
-    # if not oauth.token_is_valid():
-    #    oauth.refresh_access_token()
-    # result = oauth.session.get(url)
-    #result = api_mock()
 
     request_failed = True
     while request_failed:
@@ -27,7 +20,8 @@ def get_weather_at_home():
             print "request failed, wait 2 seconds"
             time.sleep(2)
         else:
-            condition = data['query']['results']['channel']['item']['condition']
+            condition = data['query']['results'][
+                'channel']['item']['condition']
             temp = condition['temp'].encode('utf-8')
             condition_code = condition['code']
             condition_text = condition_code_to_text(condition_code)
