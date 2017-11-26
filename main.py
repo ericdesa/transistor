@@ -114,13 +114,9 @@ def run_loop():
 
             total = 0
             nb_off = 0
-	
-	sleep_time = 0.001
-	today_datetime = datetime.now().replace(hour=5, minute=0)
-	has_detected_person_today = last_run_datetime > today_datetime
-        #if has_detected_person_today:
-	    #sleep_time = 60
-	time.sleep(sleep_time)
+
+        sleep_time = 0.002
+        time.sleep(sleep_time)
 
 
 setup_proximity_sensor()
