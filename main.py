@@ -100,7 +100,6 @@ def run_loop():
             say_hour()
 
         if total >= THRESHOLD:
-	    # print nb_off
             if nb_off < THRESHOLD * 0.3:
                 time_to_stop = time.time() + (MINUTES_TO_KEEP_ON * 60)
 
