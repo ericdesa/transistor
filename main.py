@@ -43,7 +43,8 @@ def presence_detected():
     global last_run_datetime
     today_datetime = datetime.now().replace(hour=5, minute=0)
     is_first_detection_today = last_run_datetime < today_datetime
-    is_morning = today_datetime.hour >= 6 and today_datetime <= 12
+    is_morning = time.localtime().tm_hour >= 6 and time.localtime().tm_hour <= 11
+    
     if is_first_detection_today and is_morning:
 	last_run_datetime = datetime.now()
 	is_playing = False
@@ -65,8 +66,9 @@ def is_week_day():
 
 def say_hour():
     # global last_say_hour
-    current_text = 'il est %s heure %s' % (datetime.now().hour+1, datetime.now().minute)
-    
+    current_text = 'il est %s heure %s' % (
+        time.localtime().tm_hour, time.localtime().tm_min)
+
     if last_say_hour is not current_text:
         last_say_hour = current_text    
 	player.audio_set_volume(0)
@@ -121,3 +123,4 @@ def run_loop():
 
 setup_proximity_sensor()
 run_loop()
+
