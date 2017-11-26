@@ -70,10 +70,12 @@ def say_hour():
         time.localtime().tm_hour, time.localtime().tm_min)
 
     if last_say_hour is not current_text:
-        last_say_hour = current_text    
-	player.audio_set_volume(0)
-    	say('il est %s heure %s' % (datetime.now().hour, datetime.now().minute))
-    	player.audio_set_volume(100)
+        last_say_hour = current_text
+        player.stop()
+        say(current_text)
+        time.sleep(3)
+        player.play()
+
 
 def run_loop():
     global last_run_datetime
