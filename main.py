@@ -46,8 +46,8 @@ def presence_detected():
     is_morning = time.localtime().tm_hour >= 6 and time.localtime().tm_hour <= 11
     
     if is_first_detection_today and is_morning:
-	last_run_datetime = datetime.now()
-	is_playing = False
+        last_run_datetime = datetime.now()
+        is_playing = False
         say(get_weather_at_home_text())
         if is_week_day():
             say(get_time_to_work_text(DEPARTURE_HOUR, DEPARTURE_MINUTE))
