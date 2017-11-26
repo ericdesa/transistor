@@ -79,7 +79,7 @@ def say_hour():
 
 def run_loop():
     global last_run_datetime
-    THRESHOLD = 1000
+    THRESHOLD = 500
 
     total = 0
     nb_off = 0
